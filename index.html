@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+    const w = "You win!";
+    const l = "You lose!";
+    const t = "Tie!";
+    const rpc = ["rock","paper","scissors"];
+      function computerPlay() {
+        return rpc[Math.floor(Math.random()*rpc.length)];
+      }
+      function playRound(userSelect, cpuSelect) {
+        if (userSelect == "rock") {
+          if (cpuSelect == "rock") {alert(t);return t;}
+          else if (cpuSelect == "paper") {alert(l);return l;}
+          else {alert(w);return w;}
+        }
+        else if (userSelect == "paper") {
+          if (cpuSelect == "rock") {alert(w);return w;}
+          else if (cpuSelect == "paper") {alert(t);return t;}
+          else {alert(l);return l;}
+        }
+        else {
+          if (cpuSelect == "rock")  {alert(l);return l;}
+          else if (cpuSelect == "paper") {alert(w);return w;}
+          else {alert(t);return t;}
+        }
+      }
+      //calls playRound and computerPlay to play a game best of 5
+      function game() {
+        let userScore = 0;
+        let compScore = 0;
+
+       while (true) {
+         let userChoice = prompt("Choose").toLowerCase();
+         if (rpc.indexOf(userChoice) >= 0) {
+           let result = playRound(userChoice,computerPlay());
+           if (result == w) {userScore +=1;}
+           else if (result == l) {compScore +=1;}
+           if (compScore == 3) {
+             alert("Eat dirt");
+             break;
+           }
+           else if (userScore == 3) {
+             alert("Winner")
+             break;
+           }
+         }
+         else {alert("not a valid choice");}
+
+       }
+      }
+    game();
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
